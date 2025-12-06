@@ -5,8 +5,8 @@ TOPIC = "demo-messages"
 
 def main():
     producer = KafkaProducer(
-        bootstrap_servers="localhost:9092",
-        value_serializer=lambda v: v.encode("utf-8"),
+    bootstrap_servers="localhost:29092",
+    value_serializer=lambda v: v.encode("utf-8"),
     )
 
     messages = [
