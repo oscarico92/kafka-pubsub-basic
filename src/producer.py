@@ -10,10 +10,10 @@ def main():
     )
 
     messages = [
-        "Hello Kafka!",
+        "Salut, il fait beau aujourd'hui !",
         "Message 1 from producer",
         "Message 2 from producer",
-        "Last message, bye 👋",
+        "Au revoir, bonne journée",
     ]
 
     for msg in messages:

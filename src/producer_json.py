@@ -9,9 +9,7 @@ TOPIC = "demo-json-messages"
 BOOTSTRAP_SERVERS = "localhost:29092"
 
 def create_producer():
-    """
-    KafkaProducer qui sérialise automatiquement les valeurs en JSON.
-    """
+    
     return KafkaProducer(
         bootstrap_servers=BOOTSTRAP_SERVERS,
         value_serializer=lambda v: json.dumps(v).encode("utf-8"),
@@ -21,11 +19,11 @@ def create_producer():
 def main():
     producer = create_producer()
 
-    users = ["Oscar", "Alice", "Bob"]
+    users = ["Oscarico", "Mathis", "Canal + Sport"]
     messages = [
-        "Hello Kafka with JSON!",
-        "This is a JSON event",
-        "Last JSON message, bye 👋",
+        "Salut c'est Ninho.",
+        "Le ski c'est trop cool",
+        "Le PSG gagne enfin sa première LDC !",
     ]
 
     for i, text in enumerate(messages, start=1):
@@ -38,7 +36,7 @@ def main():
             "timestamp": time.time(),
         }
 
-        key = event["user"]  # clé = nom de l'utilisateur (pour le partitionnement)
+        key = event["user"] 
 
         print(f"[PRODUCER-JSON] Sending (key={key}): {event}")
         producer.send(TOPIC, key=key, value=event)

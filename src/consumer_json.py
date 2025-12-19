@@ -6,9 +6,7 @@ TOPIC = "demo-json-messages"
 BOOTSTRAP_SERVERS = "localhost:29092"
 
 def create_consumer():
-    """
-    KafkaConsumer qui désérialise automatiquement les clés et valeurs depuis JSON.
-    """
+    
     return KafkaConsumer(
         TOPIC,
         bootstrap_servers=BOOTSTRAP_SERVERS,
@@ -25,7 +23,7 @@ def main():
 
     for message in consumer:
         key = message.key
-        event = message.value  # c'est déjà un dict Python grâce au value_deserializer
+        event = message.value  
 
         print(
             f"[CONSUMER-JSON] key={key} | "
