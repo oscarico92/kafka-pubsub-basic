@@ -1,94 +1,64 @@
-# kafka-pubsub-basic
+# Kafka Pub/Sub Basic System (Producer–Consumer)
 
 ## Project Overview
 
-This project demonstrates a basic Publish/Subscribe messaging system using Apache Kafka, running entirely in Docker.
-A Python producer publishes messages to a Kafka topic, while a consumer listens and processes them in real-time.
+This project demonstrates a **basic Publish/Subscribe messaging system** using **Apache Kafka**.  
+It showcases how producers can publish messages to a Kafka topic and how consumers can subscribe to and process these messages asynchronously.
 
-This project is part of the Big Data Frameworks coursework and aims to illustrate the core idea of distributed streaming systems.
+The project is implemented using:
+- **Kafka** (Docker-based)
+- **Python producers and consumers**
+- **JSON message format**
+- **Kafdrop** for monitoring and visualization
 
-## Why Kafka ?
+This project was developed as part of the **Big Data Frameworks** course to illustrate core messaging concepts in Big Data architectures.
 
-Apache Kafka is one of the most widely used distributed streaming platforms.
-I selected it because:
+---
 
-- It is the standard for real-time message streaming.
+## Why Kafka?
 
-- It is easy to deploy using Docker.
+Apache Kafka is a distributed event streaming platform designed for:
+- High-throughput data ingestion
+- Decoupled producer/consumer architectures
+- Real-time data pipelines
+- Scalability and fault tolerance
 
-- It implements a simple but powerful Pub/Sub model.
+Kafka is a core building block in modern Big Data ecosystems and is widely used for log ingestion, streaming analytics, microservices communication, and IoT pipelines.
 
-- It is used everywhere: microservices, IoT, real-time analytics, event-driven architectures.
+---
 
-This project recreates a minimal version of that ecosystem.
+## Technologies Used
 
+- Apache Kafka (Docker)
+- Docker Compose
+- Python 3.12
+- kafka-python library
+- Kafdrop (Kafka Web UI)
 
-┌──────────┐     SENDS MESSAGES     ┌──────────┐
-│ Producer │ ─────────────────────▶ │  Kafka   │
-└──────────┘                        │  Broker  │
-                                    └──────────┘
-                                             │
-                                             │ STREAMS MESSAGES
-                                             ▼
-                                    ┌────────────┐
-                                    │  Consumer  │
-                                    └────────────┘
+---
 
-## Installation & Setup
+## Project Architecture
 
-### 1) Clone the Repository
-git clone
-cd kafka-pubsub-basic  
+Producer → Kafka Broker → Consumer  
+                     ↘  
+                      Kafdrop (Monitoring UI)
 
-### 2) Start Kafka & Zookeeper with Docker
-Your docker-compose.yml automatically starts the required services:
-docker compose up -d
-Verify containers:
-docker ps
-Expected result:
-kafka    Running
-zookeeper Running
+Kafka acts as a buffer and decoupling layer between producers and consumers.
 
-### 3) Install Python Dependencies
-pip install kafka-python
+---
 
-## Usage
-### Start the Consumer (listens for messages)
-python consumer.py
-Expected output:
-[CONSUMER] Listening for messages...
+## Prerequisites
 
-### Start the Producer (sends messages)
-python producer.py
+- Docker Desktop
+- Python 3.10+
+- Git
 
-Expected output:
-[PRODUCER] Sending: Hello Kafka!
-[PRODUCER] Sending: Message 1 from producer
-[PRODUCER] Sending: Message 2 from producer
-[PRODUCER] Sending: Last message, bye 👋
+---
 
-## What Happens Next?
+## Setup Instructions
 
-The consumer receives everything in real-time:
-[CONSUMER] Received: Hello Kafka!
-[CONSUMER] Received: Message 1 from producer
-[CONSUMER] Received: Message 2 from producer
-[CONSUMER] Received: Last message, bye 👋
+### 1. Clone the repository
 
-## Screenshots (Proof of Execution)
-
-## Folder Structure
-
-kafka-pubsub-basic/
-│
-├── docker-compose.yml
-├── producer.py
-├── consumer.py
-├── README.md
-└── media/
-    ├── producer.png
-    └── consumer.png
-
-
-## My Setup Notes (Troubleshooting & Learnings)
-
+```bash
+git clone <your-repository-url>
+cd kafka-pubsub-basic
