@@ -205,34 +205,60 @@ Open the Kafka monitoring interface:
 http://localhost:19000
 ```
 
-
 Kafdrop provides a web-based UI to inspect Kafka brokers, topics, partitions, and messages.
 
-#### Kafka cluster overview
+#### Kafka Cluster Verification (Kafdrop)
 
-![Kafdrop overview](media/kafdrop-overview.png)
+To verify that the Kafka cluster is running correctly, Kafdrop was used as a web-based Kafka monitoring tool.
 
-This view confirms that:
-- the Kafka broker is running
-- the cluster is healthy
-- Kafdrop can successfully connect to Kafka
+The following screenshot shows the global cluster overview, including:
+- The active broker
+- The number of topics
+- Partition distribution
+- Replication status
 
-#### Available topics
+![Kafka Cluster Overview](media/kafdrop-cluster-overview.png)
 
-![Kafka topics](media/kafdrop-topics.png)
+#### Text-Based Pub/Sub Example
 
-This view shows the Kafka topics created by the producers:
-- `demo-messages`
-- `demo-json-messages`
+A first Kafka topic (`demo-messages`) was created to demonstrate a basic Producer–Consumer pattern using plain text messages.
 
-#### JSON messages inspection
+The following screenshot shows:
+- The topic configuration
+- Stored messages
+- The consumer group reading from this topic
+- No consumer lag (messages successfully consumed)
 
-![JSON messages in Kafdrop](media/kafdrop-json-messages.png)
+![Demo Messages Topic](media/kafdrop-topic-demo-messages.png)
 
-This view confirms that:
-- JSON messages are correctly produced
-- messages are stored in Kafka
-- consumers can read structured events
+#### JSON Pub/Sub Implementation
+
+To improve the data structure and simulate a real-world use case, a second topic (`demo-json-messages`) was created using JSON-formatted messages.
+
+This implementation uses:
+- A JSON Producer sending structured messages
+- A JSON Consumer deserializing and processing the messages
+- Kafka consumer groups for offset management
+
+The screenshot below confirms:
+- Messages are correctly published
+- Messages are consumed without lag
+- The consumer group is active
+
+![Demo JSON Messages Topic](media/kafdrop-topic-demo-json.png)
+
+#### Kafka Internal Offset Management
+
+Kafka internally manages consumer offsets using a dedicated topic called `__consumer_offsets`.
+
+This topic is automatically created by Kafka and is used to:
+- Track consumer group progress
+- Enable fault tolerance
+- Support message replay
+
+The following screenshot shows the internal configuration of this topic, including compaction and partitioning.
+
+![Kafka Consumer Offsets](media/kafdrop-consumer-offsets.png)
 
 ## 5.5 Summary
 
