@@ -1,4 +1,3 @@
-# consumer_json.py
 from kafka import KafkaConsumer
 import json
 
@@ -35,3 +34,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
