@@ -231,7 +231,7 @@ The following screenshot shows:
 - No consumer lag (messages successfully consumed)
 
 ![Demo Messages Topic](media/kafdrop-topic-demo-messages.png)
-This topic (demo-json-messages) shows the JSON-based implementation. Structured messages are published by the producer and consumed by the consumer group in real time.
+This topic (demo-messages) demonstrates a basic Producer–Consumer pattern using plain text messages. The consumer group successfully consumes all messages with no lag.
 
 #### 5.4.3 JSON Pub/Sub Implementation
 
@@ -248,6 +248,7 @@ The screenshot below confirms:
 - The consumer group is active
 
 ![Demo JSON Messages Topic](media/kafdrop-topic-demo-json.png)
+This topic (demo-json-messages) shows the JSON-based implementation. Structured messages are published by the producer and consumed by the consumer group in real time.
 
 #### 5.4.4 Kafka Internal Offset Management
 
