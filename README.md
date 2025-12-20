@@ -207,7 +207,7 @@ http://localhost:19000
 
 Kafdrop provides a web-based UI to inspect Kafka brokers, topics, partitions, and messages.
 
-#### Kafka Cluster Verification (Kafdrop)
+#### 5.4.1 Kafka Cluster Verification (Kafdrop)
 
 To verify that the Kafka cluster is running correctly, Kafdrop was used as a web-based Kafka monitoring tool.
 
@@ -218,8 +218,9 @@ The following screenshot shows the global cluster overview, including:
 - Replication status
 
 ![Kafka Cluster Overview](media/kafdrop-cluster-overview.png)
+This screenshot shows the global Kafka cluster overview in Kafdrop, including the active broker, available topics, partition distribution, and replication status. It confirms that the Kafka infrastructure is running correctly.
 
-#### Text-Based Pub/Sub Example
+#### 5.4.2 Text-Based Pub/Sub Example
 
 A first Kafka topic (`demo-messages`) was created to demonstrate a basic Producer–Consumer pattern using plain text messages.
 
@@ -230,8 +231,9 @@ The following screenshot shows:
 - No consumer lag (messages successfully consumed)
 
 ![Demo Messages Topic](media/kafdrop-topic-demo-messages.png)
+This topic (demo-json-messages) shows the JSON-based implementation. Structured messages are published by the producer and consumed by the consumer group in real time.
 
-#### JSON Pub/Sub Implementation
+#### 5.4.3 JSON Pub/Sub Implementation
 
 To improve the data structure and simulate a real-world use case, a second topic (`demo-json-messages`) was created using JSON-formatted messages.
 
@@ -247,7 +249,7 @@ The screenshot below confirms:
 
 ![Demo JSON Messages Topic](media/kafdrop-topic-demo-json.png)
 
-#### Kafka Internal Offset Management
+#### 5.4.4 Kafka Internal Offset Management
 
 Kafka internally manages consumer offsets using a dedicated topic called `__consumer_offsets`.
 
@@ -259,6 +261,8 @@ This topic is automatically created by Kafka and is used to:
 The following screenshot shows the internal configuration of this topic, including compaction and partitioning.
 
 ![Kafka Consumer Offsets](media/kafdrop-consumer-offsets.png)
+
+Kafka internally manages consumer offsets using the __consumer_offsets topic. This screenshot highlights Kafka’s fault-tolerant offset tracking and compaction mechanism.
 
 ## 5.5 Summary
 
