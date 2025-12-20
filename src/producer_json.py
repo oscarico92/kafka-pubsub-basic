@@ -1,4 +1,3 @@
-# producer_json.py
 from kafka import KafkaProducer
 import json
 import time
@@ -48,3 +47,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
