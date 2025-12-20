@@ -205,17 +205,34 @@ Open the Kafka monitoring interface:
 http://localhost:19000
 ```
 
-Using Kafdrop, you can:
 
-- verify that the topic demo-json-messages exists
+Kafdrop provides a web-based UI to inspect Kafka brokers, topics, partitions, and messages.
 
-- inspect partitions and offsets
+#### Kafka cluster overview
 
-- view the JSON messages produced by the application
+![Kafdrop overview](media/kafdrop-overview.png)
 
-- confirm that consumers are correctly reading from the topic
+This view confirms that:
+- the Kafka broker is running
+- the cluster is healthy
+- Kafdrop can successfully connect to Kafka
 
-This step provides visual proof that Kafka is running correctly and that messages are successfully exchanged.
+#### Available topics
+
+![Kafka topics](media/kafdrop-topics.png)
+
+This view shows the Kafka topics created by the producers:
+- `demo-messages`
+- `demo-json-messages`
+
+#### JSON messages inspection
+
+![JSON messages in Kafdrop](media/kafdrop-json-messages.png)
+
+This view confirms that:
+- JSON messages are correctly produced
+- messages are stored in Kafka
+- consumers can read structured events
 
 ## 5.5 Summary
 
