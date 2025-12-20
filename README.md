@@ -98,7 +98,7 @@ docker compose up -d
 ```
 
 Docker containers running:
-![Docker containers](media/Capture d'écran 2025-12-20 002616.png)
+![Docker containers](media/docker-containers.png)
 
 Services exposed:
 
