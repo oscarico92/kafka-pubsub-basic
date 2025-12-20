@@ -1,4 +1,5 @@
 # Kafka Pub/Sub Basic System (Producer–Consumer)
+#### By Oscar SCHWARTZ and Mathis LEITAO - ING4 DATA&IA Gr01
 
 ## Project Overview
 
@@ -99,6 +100,7 @@ docker compose up -d
 
 Docker containers running:
 ![Docker containers](media/docker-containers.png)
+![Docker containers](media/Docker_ps.png)
 
 Services exposed:
 
@@ -108,9 +110,7 @@ Internal (Docker network): kafka:9092
 
 Host access: localhost:29092
 
-Kafdrop UI:
-
-http://localhost:19000
+Kafdrop UI: http://localhost:19000
 
 ### Stop the services
 ```bash
@@ -126,12 +126,14 @@ This demo shows a simple text-based messaging flow using Kafka.
 cd src
 python consumer.py
 ```
+![Python-Consumer](media/Python-consumers_waiting.png)
 
 ### Start the producer (in another terminal)
 ```powershell
 cd src
 python producer.py
 ```
+![Python-Producer](media/Python-producer.png)
 
 Expected behavior:
 The producer sends text messages to Kafka
@@ -149,8 +151,8 @@ Instead of sending plain text, the producer sends JSON objects (events), and the
 {
   "event_id": "uuid",
   "type": "chat_message",
-  "user": "Oscar",
-  "text": "Hello Kafka with JSON!",
+  "user": "Oscarico",
+  "text": "Hello it's rainings cats and dogs today !",
   "index": 1,
   "timestamp": 1730000000
 }
@@ -166,10 +168,8 @@ python consumer_json.py
 ```
 The consumer subscribes to the Kafka topic demo-json-messages and continuously listens for incoming JSON events.
 
-Example output:
-```
-[CONSUMER-JSON] key=Oscar | user=Oscar | text=Hello Kafka with JSON! | index=1 | ts=1730000000
-```
+![JSON messages](media/Python-consumers_json_waiting.png)
+
 This confirms that:
 - the consumer is connected to Kafka
 - JSON messages are correctly deserialized
@@ -183,9 +183,14 @@ In a second terminal, activate the same virtual environment and run the producer
 cd src
 python producer_json.py
 ```
+The producer sends multiple JSON-formatted events to Kafka.
+
+results:
+![JSON messages](media/Python-producer_json.png)
+
 The consumer subscribes to the Kafka topic demo-json-messages and continuously listens for incoming JSON events.
 
-The producer sends multiple JSON-formatted events to Kafka.
+![JSON messages](media/Python-consumer_json.png)
 
 Expected behavior:
 - JSON messages are published to the topic
