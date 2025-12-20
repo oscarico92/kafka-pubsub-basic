@@ -269,3 +269,68 @@ Kafka internally manages consumer offsets using the __consumer_offsets topic. Th
 
 The JSON producer/consumer implementation demonstrates a realistic Kafka usage scenario.
 It reflects how Kafka is commonly used in Big Data pipelines to transport structured events between distributed systems.
+
+## 6 My Setup Notes
+
+During the setup of this Kafka Pub/Sub project, I encountered several technical challenges that helped me better understand both Kafka and the surrounding ecosystem.
+
+### 1. Kafka Python Client Compatibility Issue
+
+While implementing the JSON Producer and Consumer in Python, I initially encountered the following error when running the scripts:
+```
+ModuleNotFoundError: No module named 'kafka.vendor.six.moves'
+```
+This issue occurred because the `kafka-python` library is not fully compatible with Python 3.12 in certain versions. The error was raised internally when Kafka attempted to import legacy dependencies.
+
+**Resolution:**
+- I isolated the issue by checking stack traces and testing imports in isolation.
+- I resolved it by:
+  - Creating a dedicated Python virtual environment
+  - Installing a compatible version of `kafka-python`
+  - Ensuring that VS Code was using the correct interpreter
+
+This reinforced the importance of environment isolation when working with Big Data tooling and Python dependencies.
+
+---
+
+### 2. Docker Image Resolution Issues
+
+While launching the Kafka stack with Docker Compose, I encountered errors such as:
+```
+failed to resolve reference "docker.io/bitnami/kafka"
+```
+
+This issue was caused by incorrect or unavailable image tags in the `docker-compose.yml` file.
+
+**Resolution:**
+- I verified image availability on Docker Hub
+- Updated image references to valid and stable tags
+- Re-ran the containers and verified successful startup using `docker ps`
+
+This step highlighted the importance of understanding container image versions and registry resolution when deploying distributed systems.
+
+---
+
+### 3. Understanding Kafka Internal Topics
+
+While using Kafdrop, I noticed the presence of the `__consumer_offsets` topic, which initially seemed unexpected.
+
+After investigation, I learned that:
+- Kafka internally uses this topic to track consumer group offsets
+- The topic is compacted and fault-tolerant
+- This mechanism ensures reliable message consumption and recovery
+
+This helped me better understand Kafka’s internal architecture and how consumer state is managed in a distributed environment.
+
+---
+
+### Key Takeaways
+
+Through these challenges, I gained hands-on experience with:
+- Kafka Producer–Consumer patterns
+- JSON message serialization
+- Docker-based service orchestration
+- Debugging distributed systems
+- Kafka monitoring and internal mechanisms
+
+Overall, troubleshooting these issues significantly improved my confidence in working with real-world Big Data pipelines.
